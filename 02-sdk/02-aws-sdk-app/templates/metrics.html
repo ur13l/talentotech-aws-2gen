@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instancia {{instance.id}} - {{instance.instance_type}}</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Datos de la instancia {{instance.id}} - {{instance.instance_type}}</h1>
+
+    <h2>Métricas de la instancia</h2>
+
+    <h3>Uso de CPU</h3>
+    <!-- iterate over cpu_metrics array -->
+    <canvas id="cpu-chart" style="max-width: 500px; max-height: 400px"></canvas>
+    <script>
+      const ctx = document.querySelector('#cpu-chart').getContext('2d');
+      const labels = [
+        {% for metric in cpu_metrics %}
+        "{{  metric['Timestamp'] }}",
+        {% endfor %}
+      ];
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'CPU Utilization',
+          data: [
+            {% for metric in cpu_metrics %}
+              {{ metric['Average'] }},
+            {% endfor %}
+          ],
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1
+        }]
+      };
+      const config = {
+        type: 'line',
+        data: data,
+      };
+      const cpuChart = new Chart(ctx, config);
+    </script>
+  </body>
+</html>
