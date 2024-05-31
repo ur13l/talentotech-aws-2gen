@@ -59,7 +59,7 @@ Crear una aplicación en Flask que sea desplegada dentro de una instancia de EC2
 
    @app.route('/')
    def hello_world():
-       return 'Hello, World!'
+       return '<h1>Hello, World!</h1>'
 
    if __name__ == '__main__':
        app.run(host='0.0.0.0', port=500)
