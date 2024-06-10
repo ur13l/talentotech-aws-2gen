@@ -9,17 +9,19 @@ El objetivo principal es agregar dos secciones a la pantalla mostrada en la ruta
 
 1. **Sección de volúmenes:** Deberá listar cada uno de los volúmenes de disco duro del servicio EBS añadidos a la instancia de servidor seleccionada. En esta sección se deben mostrar al menos los siguientes datos por cada volumen:
 
-   a. ID del volumen.
-   b. Fecha de creación.
-   c. Estado
-   d. Tamaño (en GB)
+   - ID del volumen.
+   - Fecha de creación.
+   - Estado
+   - Tamaño (en GB)
 
 2. **Sección de Grupos de segudirad::** Esta sección debe mostrar las reglas de entrada y de salida de, al menos, un grupo de seguridad, para cada regla se deberá mostrar lo siguiente:
 
-   a. Si es regla de ingreso o egreso.
-   b. El protocolo IP.
-   c. El rango de puertos.
-   d. Bloque de direcciones IP permitidos.
+   - Si es regla de ingreso o egreso.
+   - El protocolo IP.
+   - El rango de puertos.
+   - Bloque de direcciones IP permitidos.
+
+Una vez aplicados los nuevos cambios, se generará un archivo zip con todo el contenido de la carpeta (excepto la carpeta **.venv**). Para validar los cambios se pueden utilizar los comandos `docker build` y `docker run` explicados en la práctica 3.
 
 ## Consideraciones
 
@@ -27,6 +29,8 @@ El objetivo principal es agregar dos secciones a la pantalla mostrada en la ruta
 
 - La práctica debe estar desarrollada utilizando el SDK de AWS (boto3) y puede utilizar cualquier elemento disponible en la documentación, ya sea en forma de recurso o cliente de la biblioteca.
   [Revisar documentación](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html).
+
+- La práctica se considerará completa siempre y cuando se entregue el código fuente para la generación de una imagen de Docker en formato de archivo comprimido, no es obligatorio poner en marcha la imagen en algún servicio de la plataforma. Para profundizar más en el tema, revisar la sección de **Retos adicionales**.
 
 ## Instrucciones de entrega
 
@@ -36,5 +40,6 @@ El objetivo principal es agregar dos secciones a la pantalla mostrada en la ruta
 
 ## Retos adicionales (opcionales)
 
+- Publicar la imagen de contenedor en el repositorio de ECR con la etiqueta _latest_.
+- Actualizar la ejecución del servicio y tarea de ECS desplegados en la sesión.
 - Crear la misma aplicación utilizando otro lenguaje de programación como Java, Javascript, PHP, etc.
-- Publicar la imagen de contenedor en ECR y ponerlo en marcha utilizando Elastic Container Service (ECS). **Puede generar costos adicionales en AWS**.
