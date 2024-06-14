@@ -4,7 +4,8 @@
 
 De acuerdo a lo visto en las sesiones anteriores, durante este ejercicio se propone la creación de una API REST que sea accesible desde Internet de forma pública y ejecute alguna de las acciones descritas en el **Objetivo del ejercicio**.
 
-## Objetivo del ejericio
+## Objetivo del ejericio
+
 Utilizando AWS API Gateway y AWS Lambda, crear una API REST con endpoints para realizar diferentes funcionalidades. Cada equipo podrá elegir la lógica del (o los) endpoint(s) que quiera implementar, basados en la siguiente lista:
 
 1. **Calculadora API:**

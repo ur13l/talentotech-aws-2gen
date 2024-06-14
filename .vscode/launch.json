@@ -1,0 +1,76 @@
+{
+  "configurations": [
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "02-ec2-api:HelloWorldFunction (python3.12)",
+      "invokeTarget": {
+        "target": "template",
+        "templatePath": "${workspaceFolder}/04-lambda-api-gateway/02-ec2-api/template.yaml",
+        "logicalId": "HelloWorldFunction"
+      },
+      "lambda": {
+        "payload": {},
+        "environmentVariables": {},
+        "runtime": "python3.12"
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "API 02-ec2-api:HelloWorldFunction (python3.12)",
+      "invokeTarget": {
+        "target": "api",
+        "templatePath": "${workspaceFolder}/04-lambda-api-gateway/02-ec2-api/template.yaml",
+        "logicalId": "EC2API"
+      },
+      "api": {
+        "path": "/hello",
+        "httpMethod": "get",
+        "payload": {
+          "json": {}
+        }
+      },
+      "lambda": {
+        "runtime": "python3.12"
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "hello-world-python:HelloWorldFunction (python3.12)",
+      "invokeTarget": {
+        "target": "template",
+        "templatePath": "${workspaceFolder}/04-lambda-api-gateway/01-hello-world/hello-world-python/template.yaml",
+        "logicalId": "HelloWorldFunction"
+      },
+      "lambda": {
+        "payload": {
+          "path": "${workspaceFolder}/04-lambda-api-gateway/01-hello-world/hello-world-python/events/event.json"
+        },
+        "environmentVariables": {},
+        "runtime": "python3.12"
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "API hello-world-python:HelloWorldFunction (python3.12)",
+      "invokeTarget": {
+        "target": "api",
+        "templatePath": "${workspaceFolder}/04-lambda-api-gateway/01-hello-world/hello-world-python/template.yaml",
+        "logicalId": "HelloWorldFunction"
+      },
+      "api": {
+        "path": "/hello",
+        "httpMethod": "get",
+        "payload": {
+          "json": {}
+        }
+      },
+      "lambda": {
+        "runtime": "python3.12"
+      }
+    }
+  ]
+}
