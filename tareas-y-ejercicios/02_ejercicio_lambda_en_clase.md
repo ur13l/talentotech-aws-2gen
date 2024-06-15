@@ -29,4 +29,4 @@ Utilizando AWS API Gateway y AWS Lambda, crear una API REST con endpoints para r
 ## Instrucciones de entrega
 
 1. La práctica debe crearse utilizando SAM y publicarse con sam deploy.
-2. Se debe compartir el enlace del endpoint ge
+2. Se debe compartir el enlace del endpoint para poder probar las APIs.
