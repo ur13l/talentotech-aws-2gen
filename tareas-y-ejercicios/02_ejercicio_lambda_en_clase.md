@@ -29,7 +29,7 @@ Utilizando AWS API Gateway y AWS Lambda, crear una API REST con endpoints para r
 
 1. Una vez realizadas las modificaciones a la app, el proyecto debe contar con un archivo Dockerfile que permita la carga de una clave de acceso de AWS como parámetro para su construcción.
 
-2. La práctica debe subirse a la plataforma en formato zip (comprimir la carpeta del proyecto).
+2. La práctica debe subirse a la plataforma utilizando SAM.
 
 ## Retos adicionales (opcionales)
 
