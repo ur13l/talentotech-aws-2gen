@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  products-microservice
+
+  Microservicio para la gestión de productos
+
+Globals:
+  Function:
+    Timeout: 6
+
+Resources:
+  ProductsTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: "ProductsTable"
+      PrimaryKey:
+        Name: id
+        Type: String
+  ProductsFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: products/
+      Handler: app.lambda_handler
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ProductsTable
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ProductsTable
+
+      Events:
+        Products:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /products/create
+            Method: post
