@@ -23,15 +23,10 @@ Utilizando AWS API Gateway y AWS Lambda, crear una API REST con endpoints para r
 
 ## Consideraciones
 
-- Independientemente de la API elegida, este
+- De las opciones disponibles, solo se debe elegir una.
+- Considerar el mecanismo para pasar la información, se puede utilizar el método GET o POST y pasar la información por queryStrings o el cuerpo(body) de la petición.
 
 ## Instrucciones de entrega
 
-1. Una vez realizadas las modificaciones a la app, el proyecto debe contar con un archivo Dockerfile que permita la carga de una clave de acceso de AWS como parámetro para su construcción.
-
-2. La práctica debe subirse a la plataforma en formato zip (comprimir la carpeta del proyecto).
-
-## Retos adicionales (opcionales)
-
-- Crear la misma aplicación utilizando otro lenguaje de programación como Java, Javascript, PHP, etc.
-- Publicar la imagen de contenedor en ECR y ponerlo en marcha utilizando Elastic Container Service (ECS). **Puede generar costos adicionales en AWS**.
+1. La práctica debe crearse utilizando SAM y publicarse con sam deploy.
+2. Se debe compartir el enlace del endpoint para poder probar las APIs.
