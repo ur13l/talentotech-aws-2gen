@@ -3,11 +3,11 @@ import os
 
 import aws_cdk as cdk
 
-from metadata_project.metadata_project_stack import MetadataStack
+from metadata_project.metadata_project_stack import Metadata1Stack
 
 
 app = cdk.App()
-MetadataStack(app, "MetadataStack", env=cdk.Environment(
+Metadata1Stack(app, "Metadata1Stack", env=cdk.Environment(
     account=os.getenv('CDK_DEFAULT_ACCOUNT'),
     region=os.getenv('CDK_DEFAULT_REGION')
     )

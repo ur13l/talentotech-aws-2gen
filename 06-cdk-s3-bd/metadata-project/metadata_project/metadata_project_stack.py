@@ -17,7 +17,7 @@ import json
 
 from constructs import Construct
 
-class MetadataStack(Stack):
+class Metadata1Stack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -34,7 +34,7 @@ class MetadataStack(Stack):
 
         # Base de datos de RDS - PostgreSQL
         db_credentials_parameter = ssm.StringParameter(self, "DBCredentialsParameter",
-            parameter_name="rds-metadata-credentials",
+            parameter_name="rds-metadata-1-credentials",
             string_value=json.dumps({
                 "username": "talento_tech_user",
                 "password": "123asdZXC_"
@@ -85,8 +85,8 @@ class MetadataStack(Stack):
         )
 
         # Función lambda generada a partir de contenedor
-        metadata_function = _lambda.DockerImageFunction(self, "MetadataLambda",
-                                                        function_name="MetadataLambda",
+        metadata_function = _lambda.DockerImageFunction(self, "StoreMetadataFunction",
+                                                        function_name="StoreMetadataFunction",
                                                         environment={
                                                             "BUCKET_NAME": bucket.bucket_name,
                                                             "DB_SECRET": db_credentials_parameter.parameter_name,
@@ -103,7 +103,6 @@ class MetadataStack(Stack):
         bucket.grant_read_write(metadata_function)
         db_credentials_parameter.grant_read(metadata_function)
         database.grant_connect(metadata_function, "talento_tech_user")
-        # database.grant_connect(db_security_group, "talento_tech_user")
 
         # S3 Event Source
         metadata_function.add_event_source(lambda_event_sources.S3EventSource(bucket,
