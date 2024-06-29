@@ -1,0 +1,7 @@
+CREATE TABLE metadata (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  last_modified TIMESTAMP NOT NULL,
+  size BIGINT NOT NULL,
+  extension VARCHAR(10) NOT NULL
+);

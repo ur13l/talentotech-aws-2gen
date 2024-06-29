@@ -9,6 +9,7 @@ def lambda_handler(event, context):
 
     table = dynamodb.Table(os.environ['TABLE_NAME'])
     resource = event.get('resource', '/')
+    
     body = json.loads(event.get('body', '{}'))
 
     if resource == '/products/create':
